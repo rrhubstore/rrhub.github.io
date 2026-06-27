@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Admin Panel</title>
+
+<script>
+if(localStorage.getItem("login") !== "true"){
+    window.location.href = "login.html";
+}
+</script>
+
+</head>
+
+<body>
+
+<h1>🛠️ Product Add Panel</h1>
+
+<a href="admin.html">⬅ Back to Admin</a>
+
+<hr>
+
+<h2>➕ Add Product</h2>
+
+<input id="name" placeholder="Product Name"><br><br>
+<input id="price" placeholder="Price"><br><br>
+<input id="image" placeholder="Image URL"><br><br>
+<input id="category" placeholder="Category (Electronics/Fashion)"><br><br>
+
+<button onclick="addProduct()">Add Product</button>
+
+<hr>
+
+<h2>📦 Product List</h2>
+
+<div id="list"></div>
+
+<script>
+
+// load products
+function loadProducts(){
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    let container = document.getElementById("list");
+    container.innerHTML = "";
+
+    products.forEach((p, index) => {
+
+        container.innerHTML += `
+        <div style="border:1px solid black; padding:10px; margin:10px;">
+
+            <img src="${p.image}" width="100"><br>
+
+            <h3>${p.name}</h3>
+            <p>₹${p.price}</p>
+            <p>Category: ${p.category}</p>
+
+            <button onclick="deleteProduct(${index})" style="background:red;color:white;">
+                Delete
+            </button>
+
+        </div>
+        `;
+    });
+}
+
+// add product
+function addProduct(){
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    let newProduct = {
+        name: document.getElementById("name").value,
+        price: document.getElementById("price").value,
+        image: document.getElementById("image").value,
+        category: document.getElementById("category").value
+    };
+
+    products.push(newProduct);
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    alert("Product Added ✅");
+
+    loadProducts();
+}
+
+// delete product
+function deleteProduct(index){
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    products.splice(index, 1);
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    loadProducts();
+}
+
+loadProducts();
+
+</script>
+
+</body>
+</html>
