@@ -56,3 +56,24 @@ function markDelivered(index){
 loadOrders();
 </script>
 order.status = "Shipped";
+db.collection("orders").onSnapshot((snapshot)=>{
+
+    let container = document.getElementById("orders");
+    container.innerHTML = "";
+
+    snapshot.forEach(doc => {
+
+        let o = doc.data();
+
+        container.innerHTML += `
+        <div style="border:1px solid #000; padding:10px; margin:10px;">
+
+            <h3>${o.name}</h3>
+            <p>${o.phone}</p>
+            <p>${o.address}</p>
+            <p>Status: ${o.status}</p>
+
+        </div>
+        `;
+    });
+});
