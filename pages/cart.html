@@ -42,6 +42,34 @@ Checkout Now
 <footer>
 <p>© 2026 R&R Hub</p>
 </footer>
+<script>
+function loadCart(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let container = document.getElementById("cart-items");
+    let total = 0;
 
+    if(cart.length === 0){
+        container.innerHTML = "<p>No items added yet.</p>";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    cart.forEach(item => {
+        total += item.price;
+
+        container.innerHTML += `
+        <div class="product-card">
+            <h3>${item.name}</h3>
+            <p>₹${item.price}</p>
+        </div>
+        `;
+    });
+
+    document.getElementById("total").innerText = "Total: ₹" + total;
+}
+
+loadCart();
+</script>
 </body>
 </html>
