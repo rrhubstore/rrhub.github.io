@@ -55,16 +55,20 @@ function loadCart(){
 
     container.innerHTML = "";
 
-    cart.forEach(item => {
-        total += item.price;
+    cart.forEach((item, index) => {
+    total += item.price;
 
-        container.innerHTML += `
-        <div class="product-card">
-            <h3>${item.name}</h3>
-            <p>₹${item.price}</p>
-        </div>
-        `;
-    });
+    container.innerHTML += `
+    <div class="product-card">
+        <h3>${item.name}</h3>
+        <p>₹${item.price}</p>
+
+        <button onclick="removeItem(${index})" style="background:red;color:white;padding:5px;">
+            Remove
+        </button>
+    </div>
+    `;
+});
 
     document.getElementById("total").innerText = "Total: ₹" + total;
 }
