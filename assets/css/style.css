@@ -176,3 +176,32 @@ background:#ffd700;
 transform:scale(1.05);
 transition:.3s;
 }
+.footer{
+background:#111;
+padding:40px;
+margin-top:50px;
+color:white;
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+border-top:2px solid gold;
+}
+
+.footer-box{
+width:250px;
+margin:15px;
+}
+
+.footer h3{
+color:gold;
+margin-bottom:15px;
+}
+
+.footer a{
+color:white;
+text-decoration:none;
+}
+
+.footer a:hover{
+color:gold;
+}
