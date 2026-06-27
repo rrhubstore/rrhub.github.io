@@ -121,3 +121,5 @@ function payNow(){
     var rzp1 = new Razorpay(options);
     rzp1.open();
 }
+var rzp1 = new Razorpay(options);
+rzp1.open();
