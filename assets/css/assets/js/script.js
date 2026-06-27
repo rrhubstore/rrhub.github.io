@@ -212,3 +212,21 @@ function placeOrder(){
 
     alert("Order placed successfully 🚀");
 }
+function addProduct(){
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    let newProduct = {
+        name: document.getElementById(bluetooth neckband).value,
+        price: document.getElementById(599).value,
+        image: document.getElementById(https://sl.bing.net/v87KXalEgm).value,
+        category: document.getElementById(electronics).value
+    };
+
+    products.push(newProduct);
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    alert("Product Added ✅");
+    loadProducts();
+}
