@@ -193,3 +193,22 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
+function placeOrder(){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let order = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        items: cart,
+        status: "Pending",
+        time: new Date().toLocaleString()
+    };
+
+    db.collection("orders").add(order);
+
+    localStorage.removeItem("cart");
+
+    alert("Order placed successfully 🚀");
+}
