@@ -1,0 +1,58 @@
+<h2>🛠️ Admin Panel - Orders</h2>
+
+<div id="orders"></div>
+
+<script>
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let container = document.getElementById("orders");
+
+function loadOrders(){
+
+    container.innerHTML = "";
+
+    orders.forEach((o, index) => {
+
+        container.innerHTML += `
+        <div style="border:2px solid #000; padding:10px; margin:10px;">
+
+            <h3>👤 ${o.customer}</h3>
+            <p>📞 ${o.phone}</p>
+            <p>📍 ${o.address}</p>
+            <p>💳 Type: ${o.type}</p>
+            <p>📦 Status: <b>${o.status}</b></p>
+            <p>⏰ ${o.time}</p>
+
+            <h4>Items:</h4>
+            <ul>
+                ${o.items.map(i => `<li>${i.name} - ₹${i.price}</li>`).join("")}
+            </ul>
+
+            <button onclick="markShipped(${index})" style="background:orange;color:white;">
+                Mark Shipped
+            </button>
+
+            <button onclick="markDelivered(${index})" style="background:green;color:white;">
+                Mark Delivered
+            </button>
+
+        </div>
+        `;
+    });
+}
+
+function markShipped(index){
+    orders[index].status = "Shipped";
+    localStorage.setItem("orders", JSON.stringify(orders));
+    loadOrders();
+}
+
+function markDelivered(index){
+    orders[index].status = "Delivered";
+    localStorage.setItem("orders", JSON.stringify(orders));
+    loadOrders();
+}
+
+loadOrders();
+</script>
+order.status = "Shipped";
