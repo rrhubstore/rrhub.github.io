@@ -62,3 +62,12 @@ function addToCart(name, price){
 
     alert(name + " added to cart");
 }
+function addToWishlist(name, price){
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    wishlist.push({name, price});
+
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+    alert(name + " added to wishlist ❤️");
+}
