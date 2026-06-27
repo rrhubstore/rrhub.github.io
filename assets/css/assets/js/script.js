@@ -151,3 +151,33 @@ function placeCODOrder(){
 
     alert("COD Order Placed ✅ Supplier ko forward karo");
 }
+status: "Pending"
+function placeCODOrder(){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if(cart.length === 0){
+        alert("Cart empty hai");
+        return;
+    }
+
+    let order = {
+        type: "COD",
+        status: "Pending",
+        customer: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        items: cart,
+        time: new Date().toLocaleString()
+    };
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    orders.push(order);
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    localStorage.removeItem("cart");
+
+    alert("COD Order Placed ✅ Status: Pending");
+}
