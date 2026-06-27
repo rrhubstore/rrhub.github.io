@@ -1,0 +1,21 @@
+<h2>🔐 Admin Login</h2>
+
+<input id="user" placeholder="Username"><br><br>
+<input id="pass" type="password" placeholder="Password"><br><br>
+
+<button onclick="login()">Login</button>
+
+<script>
+function login(){
+    let user = document.getElementById("user").value;
+    let pass = document.getElementById("pass").value;
+
+    if(user === "admin" && pass === "1234"){
+        localStorage.setItem("login", "true");
+        alert("Login Success ✅");
+        window.location.href = "admin-panel.html";
+    } else {
+        alert("Wrong credentials ❌");
+    }
+}
+</script>
