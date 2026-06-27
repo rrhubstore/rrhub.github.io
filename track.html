@@ -1,0 +1,36 @@
+<h2>📦 Track Your Order</h2>
+
+<input id="phone" placeholder="Enter Phone Number">
+<button onclick="trackOrder()">Track</button>
+
+<div id="result"></div>
+
+<script>
+function trackOrder(){
+
+    let phone = document.getElementById("phone").value;
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    let userOrders = orders.filter(o => o.phone === phone);
+
+    let container = document.getElementById("result");
+
+    if(userOrders.length === 0){
+        container.innerHTML = "No orders found";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    userOrders.forEach(o => {
+        container.innerHTML += `
+        <div style="border:1px solid #000; padding:10px; margin:10px;">
+            <h3>Type: ${o.type}</h3>
+            <p>Status: ${o.status}</p>
+            <p>Time: ${o.time}</p>
+        </div>
+        `;
+    });
+}
+</script>
