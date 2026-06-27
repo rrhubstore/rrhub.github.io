@@ -75,34 +75,31 @@ Shop Now
  <section class="products">
 
 <h2>🔥 Today's Deals</h2>
+<section id="products"></section>
 
+<script>
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+let container = document.getElementById("products");
+
+products.forEach(p => {
+container.innerHTML += `
 <div class="product-card">
-<h3>Bluetooth Neckband</h3>
-<p><del>₹999</del> <strong style="color:gold;">₹499</strong></p>
-<button onclick="addToCart('Bluetooth Neckband',499)">Add to Cart</button>
+
+<img src="${p.image}" style="width:100%;">
+
+<h3>${p.name}</h3>
+
+<p>₹${p.price}</p>
+
+<button onclick="addToCart('${p.name}',${p.price})">
+Add to Cart
+</button>
+
 </div>
-
-<div class="product-card">
-<h3>Smart Watch</h3>
-<p><del>₹1999</del> <strong style="color:gold;">₹999</strong></p>
-<button onclick="addToCart('Smart Watch',999)">Add to Cart</button>
-</div>
-
-</section>
-    <h2>Featured Products</h2>
-
-    <div class="product-card">
-        <h3>Bluetooth Neckband</h3>
-        <p>₹499</p>
-        <button onclick="addToCart('Bluetooth Neckband', 499)">Add to Cart</button>
-    </div>
-
-    <div class="product-card">
-        <h3>Smart Watch</h3>
-        <p>₹999</p>
-        <button onclick="addToCart('Smart Watch', 999)">Add to Cart</button>
-    </div>
-
+`;
+});
+</script>
 </section>
 
 <footer class="footer">
