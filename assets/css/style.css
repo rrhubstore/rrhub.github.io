@@ -142,3 +142,37 @@ footer {
     color: black;
     transform: scale(1.05);
 }
+.hero{
+background:linear-gradient(135deg,#000,#222,#444);
+padding:80px 20px;
+text-align:center;
+border-bottom:2px solid gold;
+}
+
+.hero h2{
+font-size:45px;
+color:gold;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:25px;
+color:white;
+}
+
+.hero button{
+padding:15px 35px;
+background:gold;
+border:none;
+font-size:18px;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+}
+
+.hero button:hover{
+background:#ffd700;
+transform:scale(1.05);
+transition:.3s;
+}
