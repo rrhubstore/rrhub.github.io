@@ -100,4 +100,11 @@ loadCart();
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <button onclick="payNow()">
 💳 Pay Now
+<h3>📱 Pay via UPI QR</h3>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=yourupi@okaxis&pn=R%26R%20Hub&cu=INR" 
+style="width:200px; border:1px solid #000; padding:10px;">
+
+<p>📌 Scan this QR with GPay / PhonePe / Paytm</p>
+<p><b>UPI ID:</b> yourupi@okaxis</p>
 </button>
