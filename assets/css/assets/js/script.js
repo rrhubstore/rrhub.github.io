@@ -97,3 +97,27 @@ function placeOrder(){
 
     alert("Order placed successfully ✅");
 }
+function payNow(){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = cart.reduce((sum,item)=> sum + item.price, 0);
+
+    var options = {
+        "key": "YOUR_KEY_ID_HERE", 
+        "amount": total * 100,
+        "currency": "INR",
+        "name": "R&R Hub",
+        "description": "Order Payment",
+        "handler": function (response){
+            alert("Payment Success ✅ ID: " + response.razorpay_payment_id);
+
+            localStorage.removeItem("cart");
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+}
