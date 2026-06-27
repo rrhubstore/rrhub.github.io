@@ -44,6 +44,17 @@ Checkout Now
 </footer>
 <script>
 function loadCart(){
+   <script>
+function removeItem(index){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    loadCart();
+}
+</script>
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let container = document.getElementById("cart-items");
     let total = 0;
