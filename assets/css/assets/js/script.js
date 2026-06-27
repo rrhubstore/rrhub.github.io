@@ -71,3 +71,29 @@ function addToWishlist(name, price){
 
     alert(name + " added to wishlist ❤️");
 }
+function placeOrder(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if(cart.length === 0){
+        alert("Cart empty hai");
+        return;
+    }
+
+    let order = {
+        customer: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        items: cart,
+        time: new Date().toLocaleString()
+    };
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    orders.push(order);
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    localStorage.removeItem("cart");
+
+    alert("Order placed successfully ✅");
+}
