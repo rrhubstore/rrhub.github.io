@@ -39,3 +39,17 @@ function removeItem(index) {
     cart.splice(index, 1);
     updateCart();
 }
+function searchProduct() {
+    let input = document.getElementById("searchBox").value.toLowerCase();
+    let products = document.getElementsByClassName("product-card");
+
+    for (let i = 0; i < products.length; i++) {
+        let title = products[i].innerText.toLowerCase();
+
+        if (title.includes(input)) {
+            products[i].style.display = "inline-block";
+        } else {
+            products[i].style.display = "none";
+        }
+    }
+}
