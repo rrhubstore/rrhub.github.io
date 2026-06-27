@@ -230,3 +230,30 @@ function addProduct(){
     alert("Product Added ✅");
     loadProducts();
 }
+function loadProducts(){
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    let container = document.getElementById("list");
+
+    container.innerHTML = "";
+
+    products.forEach((p, index) => {
+
+        container.innerHTML += `
+        <div style="border:1px solid black; padding:10px; margin:10px;">
+
+            <img src="${p.image}" width="100"><br>
+
+            <h3>${bluetooth neckband}</h3>
+            <p>₹${599}</p>
+            <p>${electronics}</p>
+
+            <button onclick="deleteProduct(${index})" style="background:red;color:white;">
+                Delete
+            </button>
+
+        </div>
+        `;
+    });
+}
