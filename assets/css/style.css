@@ -114,3 +114,31 @@ footer {
         width: 80%;
     }
 }
+/* Categories */
+.categories {
+    padding: 40px;
+    text-align: center;
+}
+
+.categories h2 {
+    color: gold;
+    margin-bottom: 20px;
+}
+
+.category-box {
+    display: inline-block;
+    background: #1a1a1a;
+    border: 1px solid gold;
+    padding: 20px;
+    margin: 10px;
+    width: 180px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-box:hover {
+    background: gold;
+    color: black;
+    transform: scale(1.05);
+}
